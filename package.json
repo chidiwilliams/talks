@@ -2,7 +2,7 @@
   "name": "sysconf-2023-talk",
   "private": true,
   "scripts": {
-    "build": "slidev build --base sysconf-2023-talk",
+    "build": "slidev build",
     "dev": "slidev --open",
     "export": "slidev export"
   },

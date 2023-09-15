@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/:year/:title/:slide*", "destination": "/:year/:title/index.html" }
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "dist"

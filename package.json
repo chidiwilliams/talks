@@ -10,7 +10,8 @@
   "dependencies": {
     "@slidev/cli": "^0.43.3",
     "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest"
+    "@slidev/theme-seriph": "latest",
+    "chart.js": "^4.4.0"
   },
   "devDependencies": {
     "playwright-chromium": "^1.38.0",

@@ -9,6 +9,8 @@ title: Hearing Between the Lines
 mdc: true
 layout: intro
 author: Chidi Williams
+keywords: ml,ai,whisper,buzz
+colorSchema: "light"
 ---
 
 # Hearing between the lines
@@ -19,7 +21,14 @@ author: Chidi Williams
   </span>
 </div>
 
+<!-- prettier-ignore-start -->
+
 ---
+layout: image-right
+image: img/profile.jpg
+---
+
+<!-- prettier-ignore-end -->
 
 # About me
 
@@ -42,7 +51,7 @@ author: Chidi Williams
 
 ---
 
-# How did I get here?
+# How I got here
 
 <!-- TODO: Make this a timeline -->
 
@@ -57,7 +66,7 @@ author: Chidi Williams
 
 ---
 
-# Landscape of Machine Learning for audio
+# Landscape of audio ML
 
 - Classification
 
@@ -71,6 +80,10 @@ author: Chidi Williams
   - Voice activity detection (VAD)
   - Music detection
   - Speech segmentation
+
+---
+
+# Landscape of audio ML
 
 - Recognition and Transcription
 
@@ -96,12 +109,15 @@ author: Chidi Williams
   - Running acoustic and language models
 
 - Post-processing
-
   - Correcting mistakes and formatting
+
+<!-- prettier-ignore-start -->
 
 ---
 layout: section
 ---
+
+<!-- prettier-ignore-end -->
 
 # Let's build a super-simple\* audio classifier
 
@@ -115,88 +131,138 @@ layout: section
 
 # Sampling
 
-- We sample audio data to get a digital representation of the sound waves
-- Sampling converts a continuous (uncountable) signal to a discrete (countable) representation
+<v-clicks>
 
-<!-- TODO: diagram of sampling -> left continuous signal, right discrete (number of samples) -->
-<!-- Show that increasing sampling rate/frequency improves accuracy at the cost of size -->
+- From continuous (uncountable) signal to discrete (countable) signal
+- Sampling produces a digital representation of sound waves
+
+<div class="mt-8">
+  <Sampling v-click></Sampling>
+</div>
+
+</v-clicks>
 
 ---
 
 # Feature Extraction
 
----
+<!-- TODO: Explain time domain and frequency domain -->
 
-# Acoustic Models
+<Synth></Synth>
 
----
-
-# Language model
+<!-- Lower formants are for vowels. Higher formants are what make quality of voice. -->
 
 ---
 
-# Lexicon
+# Finding formant distances
 
----
-
-# Decoder
-
-- Search algorithm
+<!-- Compare different audio formants -->
+<!-- TODO: Get new word, get formants -->
 
 ---
 
 # Whisper
 
-- What's Whisper?
-- "Robust Speech Recognition via Large-Scale Weak Supervision" ???
-- In programmer-speak:
+<div class="flex gap-4">
+  <div>
+    <ul>
+      <li>
+        General-purpose speech recognition: <b>multi-lingual speech recognition</b>, <b>speech translation</b>, and <b>language identification</b>.
+      </li>
+      <v-click>
+        <li>
+          Model sizes (varying accuracies and resource requirements)
+        </li>
+      </v-click>
+      <v-click>
+        <li>
+          Robust to accents, background noise, and technical language
+        </li>
+      </v-click>
+      <v-click>
+        <li>
+          Easy to use. Just <code>pip install</code> and run!
+  <v-start>
 
-  ```shell
-  pip install openai-whisper
-  whisper japanese.wav --language Japanese
+  ```console
+  $ pip install openai-whisper
+  $ whisper input.wav
+  Detected language: French
+  [00:00.000 --> 00:09.640]  Bienvenue dans Paserelle, un
+  podcast pensé pour éveiller la curiosité...
   ```
 
-- Audio goes in, text comes out
-  - Multi-lingual
-  - Transcribes and translates
-- Model sizes (varying accuracies and resource requirements)
-- Robust to accents, background noise, and technical language
-- Easy to use. Just `pip install` and run!
+  </v-start>
+        </li>
+      </v-click>
+    </ul>
+  </div>
+  <div>
+  <img src="img/whisper-training-data.png" width="500" />
+  </div>
+</div>
 
 ---
 
-# Buzz
+# How Whisper works
 
-- PyQt desktop app
+<div class="flex gap-4">
+  <ul>
+    <li>
+      Input audio is converted to <b>log-mel spectrogram</b>
+    </li>
+    <v-click>
+      <li>
+        <b>Transformer encoder</b> on the left encodes spectrogram to extract its important features
+      </li>
+    </v-click>
+    <v-click>
+      <li>
+        <b>Transformer decoder</b> on the right receives encoder output using a mechanism called <b>cross-attention</b>
+      </li>
+    </v-click>
+    <v-click>
+      <li>
+        Decoder predicts sequence of text tokens, starting from an initial sequence with just the "start" token, until "end" token
+      </li>
+    </v-click>
+  </ul>
+  <img src="img/whisper_architecture.svg" width="500"/>
+</div>
+
+<!-- Seq2Seq: https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html -->
+<!-- https://huggingface.co/learn/audio-course/chapter3/seq2seq -->
 
 ---
 
-# Ring Buffers
+# Open problems and opportunities
 
-- Live Recording
-- How they work
-- Demo
-
----
-
-# Thoughts, Open Problems and opportunities
-
-> <i>AI is both <u>over-hyped</u> and <u>under-rated</u>"</i>
-
-<br>
-
-- Making it easier for people to use
-- Performance
-- Build for the world
+<ul>
+  <img src="img/wer-yoruba.png" alt="WERs" />
+  <li>
+    <b>Improved localization</b>: Adding support for more languages and dialects
+  </li>
+  <v-click>
+  <li>
+    <b>Accessibility</b>: Making models easier to set up and use
+  </li>
+  </v-click>
+  <v-click>
+  <li>
+    <b>Performance</b>: Speeding up models and getting them to run on lower-end devices
+  </li>
+  </v-click>
+</ul>
 
 ---
 
 # Resources
 
-- [Introducing Whisper](https://openai.com/research/whisper), OpenAI
-- [Whisper.cpp](https://github.com/ggerganov/whisper.cpp), Georgi Gerganov
 - [Neural Networks: Zero to Hero](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ), Andrej Karpathy
 - [Practical Deep Learning for Coders](https://course.fast.ai/), Fast.ai
+- [Hugging Face Audio Course](https://huggingface.co/learn/audio-course/), Hugging Face
+- [Introducing Whisper](https://openai.com/research/whisper), OpenAI
+- [Whisper.cpp](https://github.com/ggerganov/whisper.cpp), Georgi Gerganov
 
 <div>
 </div>

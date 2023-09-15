@@ -1,8 +1,8 @@
 {
-  "name": "sysconf-2023-talk",
+  "name": "talks",
   "private": true,
   "scripts": {
-    "build": "slidev build",
+    "build": "rimraf dist && pnpm -r run build",
     "dev": "slidev --open",
     "export": "slidev export"
   },
@@ -12,6 +12,7 @@
     "@slidev/theme-seriph": "latest"
   },
   "devDependencies": {
-    "playwright-chromium": "^1.38.0"
+    "playwright-chromium": "^1.38.0",
+    "rimraf": "^5.0.1"
   }
 }

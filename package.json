@@ -1,9 +1,10 @@
 {
   "name": "talks",
   "private": true,
+  "packageManager": "pnpm@8.7.5",
   "scripts": {
     "build": "rimraf dist && pnpm -r run build",
-    "dev": "slidev --open",
+    "slidev": "slidev",
     "export": "slidev export"
   },
   "dependencies": {

@@ -10,7 +10,6 @@ drawings:
 transition: slide-left
 title: Hearing Between the Lines
 mdc: true
-download: true
 ---
 
 # Hearing Between the Lines

@@ -198,7 +198,7 @@ layout: section
     </ul>
   </div>
   <div>
-  <img src="img/whisper-training-data.png" width="500" />
+  <img src="/img/whisper-training-data.png" width="500" />
   </div>
 </div>
 
@@ -227,7 +227,7 @@ layout: section
       </li>
     </v-click>
   </ul>
-  <img src="img/whisper_architecture.svg" width="500"/>
+  <img src="/img/whisper_architecture.svg" width="500"/>
 </div>
 
 <!-- Seq2Seq: https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html -->
@@ -238,7 +238,7 @@ layout: section
 # Open problems and opportunities
 
 <ul>
-  <img src="img/wer-yoruba.png" alt="WERs" />
+  <img src="/img/wer-yoruba.png" alt="WERs" />
   <li>
     <b>Improved localization</b>: Adding support for more languages and dialects
   </li>

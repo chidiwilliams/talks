@@ -161,7 +161,7 @@ layout: section
 - From continuous (uncountable) signal to discrete (countable) signal
 - Sampling produces a digital representation of sound waves
 
-<div class="mt-8">
+<div class="mt-4">
   <Sampling v-click></Sampling>
 </div>
 
@@ -179,39 +179,71 @@ layout: section
   1. Explain time domain and frequency domain.
   2. Formants are concentrations around a frequency.
   3. Lower formants are for vowels. Higher formants are what make quality of voice.
+  4. Order of vowels (TODO: wikipedia)
 -->
 
 ---
 
 # Finding formant distances
 
-| Word | Spectrum                                | Formants      |
-| ---- | --------------------------------------- | ------------- |
-| Beet | <img src="/img/beet.png" width="200" /> | `[190, 2165]` |
-| Boot | <img src="/img/boot.png" width="200" /> | `[289, 1301]` |
+<table>
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Audio</th>
+      <th>Spectrum</th>
+      <th>Formants</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>Beet</td>
+      <td>
+        <audio ref="audioElement" id="boot" controls preload="auto">
+          <source src="/wav/beet_template.wav" type="audio/wav" />
+          Your browser does not support the audio element.
+        </audio>
+      </td>
+      <td> <img src="/img/beet.png" width="200" /> </td>
+      <td> <code>[190, 2165]</code> </td>
+    </tr>
+    <tr>
+      <td>Boot</td>
+      <td>
+        <audio ref="audioElement" id="boot" controls preload="auto">
+          <source src="/wav/boot_template.wav" type="audio/wav" />
+          Your browser does not support the audio element.
+        </audio>
+      </td>
+      <td><img src="/img/boot.png" width="200" /> </td>
+      <td><code>[289, 1301]</code> </td>
+    </tr>
+  </tbody>
+
+</table>
 
 ---
 
 # Finding formant distances
 
-<img src="/img/beet-boot.png" width="500" />
+<BeetAndBoot></BeetAndBoot>
 
 ---
 
 # Finding formant distances
-
-<img src="/img/unknown.png" width="500" />
 
 Unknown word
 
+<img src="/img/unknown.png" width="500" />
+
+`[285, 1380]`
+
 ---
 
 # Finding formant distances
 
-<div class="flex gap-16">
-  <img src="/img/beet-boot-unknown.png" style="width: 40%" />
-  <img src="/img/comparison.png" style="width: 40%" />
-</div>
+<BeetAndBoot v-bind:showUnknown="true"></BeetAndBoot>
 
 ---
 

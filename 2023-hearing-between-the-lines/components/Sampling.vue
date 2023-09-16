@@ -4,6 +4,10 @@ import { ref } from "vue";
 
 let isRecordingRef = ref(false);
 
+let audioStream: MediaStream | null = null;
+let continuousChart: Chart<any, any, any> | undefined;
+let discreteChart: Chart<any, any, any> | undefined;
+
 function startRecording() {
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -20,6 +24,7 @@ function startRecording() {
   navigator.mediaDevices
     .getUserMedia({ audio: true })
     .then((stream) => {
+      audioStream = stream;
       const source = audioContext.createMediaStreamSource(stream);
       source.connect(discreteAnalyzer);
       source.connect(continuousAnalyzer);
@@ -45,7 +50,7 @@ function startRecording() {
       },
     ],
   };
-  const continuousChart = new Chart(ctx, {
+  continuousChart ??= new Chart(ctx, {
     type: "line",
     data: data,
     options: {
@@ -60,6 +65,7 @@ function startRecording() {
       },
     },
   });
+  continuousChart.data = data;
 
   const discreteCanvas = document.getElementById(
     "discrete"
@@ -77,7 +83,7 @@ function startRecording() {
       },
     ],
   };
-  const discreteChart = new Chart(discreteCtx, {
+  discreteChart ??= new Chart(discreteCtx, {
     type: "line",
     data: discreteData,
     options: {
@@ -92,6 +98,7 @@ function startRecording() {
       },
     },
   });
+  discreteChart.data = discreteData;
 
   function draw() {
     if (!isRecordingRef.value) {
@@ -118,13 +125,20 @@ function startRecording() {
 
 function stopRecording() {
   isRecordingRef.value = false;
+
+  if (audioStream) {
+    audioStream.getTracks().forEach((track) => {
+      track.stop();
+      audioStream = null;
+    });
+  }
 }
 </script>
 
 <template>
   <div>
-    <button v-on:click="startRecording()" v-if="!isRecordingRef">Start</button>
-    <button v-on:click="stopRecording()" v-if="isRecordingRef">Stop</button>
+    <Button v-on:click="startRecording()" v-if="!isRecordingRef">Start</Button>
+    <Button v-on:click="stopRecording()" v-if="isRecordingRef">Stop</Button>
   </div>
 
   <div class="flex">

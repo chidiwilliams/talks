@@ -169,13 +169,17 @@ layout: section
 
 ---
 
-# Feature Extraction
+# Feature extraction (vowel formants)
 
 <!-- TODO: Explain time domain and frequency domain -->
 
-<Synth></Synth>
+<Spectrum></Spectrum>
 
-<!-- Lower formants are for vowels. Higher formants are what make quality of voice. -->
+<!--
+  1. Explain time domain and frequency domain.
+  2. Formants are concentrations around a frequency.
+  3. Lower formants are for vowels. Higher formants are what make quality of voice.
+-->
 
 ---
 

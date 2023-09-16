@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Chart } from "chart.js/auto";
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
+import Button from "./Button.vue";
+
 let audioElement: HTMLAudioElement | null = null;
 
 let isPlayingRef = ref(false);
@@ -112,6 +114,6 @@ function stopPlayback() {
     <canvas id="chart" style="width: 50%; max-width: 50%" height="100"></canvas>
   </div>
 
-  <button v-on:click="startPlayback" v-show="!isPlayingRef">Play</button>
-  <button v-on:click="stopPlayback" v-show="isPlayingRef">Pause</button>
+  <Button v-on:click="startPlayback" v-show="!isPlayingRef">Play</Button>
+  <Button v-on:click="stopPlayback" v-show="isPlayingRef">Pause</Button>
 </template>

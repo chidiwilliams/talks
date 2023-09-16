@@ -4,6 +4,9 @@ import { ref } from "vue";
 
 let isRecordingRef = ref(false);
 
+let audioStream: MediaStream | null = null;
+let chart: Chart<any, any, any> | undefined = undefined;
+
 function startRecording() {
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -20,6 +23,7 @@ function startRecording() {
   navigator.mediaDevices
     .getUserMedia({ audio: true })
     .then((stream) => {
+      audioStream = stream;
       const source = audioContext.createMediaStreamSource(stream);
       source.connect(bandpassFilter);
       bandpassFilter.connect(analyzer);
@@ -30,7 +34,7 @@ function startRecording() {
       console.error("Error accessing the microphone:", err);
     });
 
-  const canvas = document.getElementById("myChart")! as HTMLCanvasElement;
+  const canvas = document.getElementById("chart")! as HTMLCanvasElement;
   const ctx = canvas.getContext("2d")!;
   const data = {
     labels: Array.from(
@@ -50,10 +54,12 @@ function startRecording() {
       },
     ],
   };
-  const myChart = new Chart(ctx, {
+  chart ??= new Chart(ctx, {
     type: "line",
     data: data,
     options: {
+      responsive: true,
+      maintainAspectRatio: true,
       scales: {
         x: {
           title: { display: true, text: "Frequency (Hz)" },
@@ -68,6 +74,7 @@ function startRecording() {
       },
     },
   });
+  chart.data = data;
 
   function detectPeaks(dataArray) {
     // This is a simple peak detection algorithm.
@@ -107,19 +114,30 @@ function startRecording() {
       }
     }
 
-    myChart.update();
+    chart?.update();
   }
 }
 
 function stopRecording() {
   isRecordingRef.value = false;
+
+  if (audioStream) {
+    audioStream.getTracks().forEach((track) => {
+      track.stop();
+      audioStream = null;
+    });
+  }
 }
 </script>
 
 <template>
-  <canvas id="myChart" width="400" height="200"></canvas>
-  <div class="flex gap-4 absolute bottom-10 right-10">
-    <button v-on:click="startRecording()" v-if="!isRecordingRef">Start</button>
-    <button v-on:click="stopRecording()" v-if="isRecordingRef">Stop</button>
+  <div class="flex gap-4">
+    <div class="">
+      <Button v-on:click="startRecording()" v-if="!isRecordingRef"
+        >Start</Button
+      >
+      <Button v-on:click="stopRecording()" v-if="isRecordingRef">Stop</Button>
+    </div>
+    <canvas id="chart" class="w-full"></canvas>
   </div>
 </template>

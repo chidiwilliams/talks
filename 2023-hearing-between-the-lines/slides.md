@@ -144,11 +144,11 @@ layout: section
 
 <!-- prettier-ignore-end -->
 
-# Let's build a super-simple\* audio classifier
+# Let's build an audio classifier
 
 <div class="absolute bottom-10">
   <span class="text-sm font-400 text-neutral-500">
-    * References: <a href="https://speech.zone/super-simple-speech-recogniser/" target='__blank'>A super-simple speech recogniser</a>
+    * Reference: <a href="https://speech.zone/super-simple-speech-recogniser/" target='__blank'>A super-simple speech recogniser</a>
   </span>
 </div>
 
@@ -235,6 +235,11 @@ layout: section
 
 Unknown word
 
+<audio ref="audioElement" id="boot" controls preload="auto" class="mb-4">
+  <source src="/wav/unknown.wav" type="audio/wav" />
+  Your browser does not support the audio element.
+</audio>
+
 <img src="/img/unknown.png" width="500" />
 
 `[285, 1380]`
@@ -244,6 +249,27 @@ Unknown word
 # Finding formant distances
 
 <BeetAndBoot v-bind:showUnknown="true"></BeetAndBoot>
+
+<v-click>
+
+$$
+d = \sqrt{{({x2} - {x1})^2 + ({y2} - {y1})^2}};
+$$
+
+</v-click>
+
+<v-click>
+$$
+beet: d([285, 1380],[190, 2165]) = 791
+$$
+
+</v-click>
+
+<v-click>
+$$
+boot: d([285, 1380],[289, 1301]) = 78
+$$
+</v-click>
 
 ---
 

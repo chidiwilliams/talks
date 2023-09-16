@@ -87,7 +87,7 @@ function start() {
     <canvas
       :id="'beet-and-boot-' + showUnknown.toString()"
       style="width: 100%; max-width: 100%"
-      height="400"
+      height="300"
     ></canvas>
   </div>
 </template>

@@ -3,9 +3,7 @@
   "private": true,
   "packageManager": "pnpm@8.7.5",
   "scripts": {
-    "build": "rimraf dist && pnpm -r run build",
-    "slidev": "slidev",
-    "export": "slidev export"
+    "build": "pnpm -r run build"
   },
   "dependencies": {
     "@slidev/cli": "^0.43.3",

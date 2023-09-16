@@ -38,7 +38,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: ./node_modules/.bin/slidev build 2023-hearing-between-the-lines/slides.md --base /2023/hearing-between-the-lines/ --out $(pwd)/dist/2023/hearing-between-the-lines && pwd && ls ./dist
+        run: ./node_modules/.bin/slidev build 2023-hearing-between-the-lines/slides.md --base /talks/2023/hearing-between-the-lines/ --out $(pwd)/dist/2023/hearing-between-the-lines && pwd && ls ./dist
 
       - uses: actions/configure-pages@v3
 

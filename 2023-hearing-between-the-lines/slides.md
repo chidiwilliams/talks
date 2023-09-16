@@ -17,7 +17,7 @@ colorSchema: "light"
 
 <div class="absolute bottom-10">
   <span class="font-400 text-neutral-500">
-    <span class="text-[#066e2e] underline">SysConf</span> / 2023-09-16 / Chidi Williams
+    <span class="text-[#066e2e] font-600">SysConf</span> / 2023-09-16 / Chidi Williams
   </span>
 </div>
 
@@ -28,14 +28,14 @@ colorSchema: "light"
 <div class="flex gap-32">
   <div class="flex-1">
 
-  Chidi Williams, Software Engineer
+Chidi Williams, Software Engineer
 <v-clicks>
 
-  - Previously at a fintech in Lagos, now at a bank in London
-  - Write a programming blog at [chidiwilliams.com](https://chidiwilliams.com)
-  - Co-organize SysDsgn (and SysConf)
-  - Often build hobby projects in web animations, languages and compilers, and (more recently) AI
-  - Love to play music — guitar, piano
+- Previously at a fintech in Lagos, now at a bank in London
+- Write a programming blog at [chidiwilliams.com](https://chidiwilliams.com)
+- Co-organize SysDsgn (and SysConf)
+- Often build hobby projects in web animations, languages and compilers, and (more recently) AI
+- Love to play music — guitar, piano
 </v-clicks>
 
   </div>
@@ -61,21 +61,19 @@ colorSchema: "light"
 
 <v-clicks>
 
-- **September 2022**
+- September 2022
 
   - OpenAI releases Whisper, a multi-lingual speech-to-text transcription model
   - See a tweet about wanting the model packaged as a desktop app and I begin working on one soon after
   - Demo a Mac app on [Twitter](https://twitter.com/chidiwilliams__/status/1575197377048514560) (~20k video views, ~100k impressions)
 
-- **September 2023**:
+- September 2023
 
-  - \>7.4k stars on [GitHub](https://github.com/chidiwilliams/buzz), >130k downloads
+  - \>7k stars on [GitHub](https://github.com/chidiwilliams/buzz), >130k downloads
 
 - Here's what I've learned in the past year!
 
 </v-clicks>
-
-<!-- I'm going to talk about what I've learned in the past year. I'm still pretty new to this! -->
 
 ---
 
@@ -120,6 +118,8 @@ colorSchema: "light"
 
 # Automatic Speech Recognition as a pipeline
 
+<v-clicks>
+
 - Pre-processing
 
   - Converting the audio signal to a usable format
@@ -127,10 +127,14 @@ colorSchema: "light"
 
 - Inference
 
-  - Running acoustic and language models
+  - Acoustic model: generating potential word sequences from audio
+  - Language model: generating linguistically likely word sequences
 
 - Post-processing
+
   - Correcting mistakes and formatting
+
+</v-clicks>
 
 <!-- prettier-ignore-start -->
 
@@ -177,8 +181,33 @@ layout: section
 
 # Finding formant distances
 
-<!-- Compare different audio formants -->
-<!-- TODO: Get new word, get formants -->
+| Word | Spectrum                                | Formants      |
+| ---- | --------------------------------------- | ------------- |
+| Beet | <img src="/img/beet.png" width="200" /> | `[190, 2165]` |
+| Boot | <img src="/img/boot.png" width="200" /> | `[289, 1301]` |
+
+---
+
+# Finding formant distances
+
+<img src="/img/beet-boot.png" width="500" />
+
+---
+
+# Finding formant distances
+
+<img src="/img/unknown.png" width="500" />
+
+Unknown word
+
+---
+
+# Finding formant distances
+
+<div class="flex gap-16">
+  <img src="/img/beet-boot-unknown.png" style="width: 40%" />
+  <img src="/img/comparison.png" style="width: 40%" />
+</div>
 
 ---
 

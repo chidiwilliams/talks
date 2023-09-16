@@ -6,13 +6,6 @@
     "build": "pnpm -r run build"
   },
   "dependencies": {
-    "@slidev/cli": "^0.43.3",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "chart.js": "^4.4.0"
-  },
-  "devDependencies": {
-    "playwright-chromium": "^1.38.0",
-    "rimraf": "^5.0.1"
+    "@slidev/cli": "^0.43.3"
   }
 }

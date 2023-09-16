@@ -138,6 +138,6 @@ function stopRecording() {
       >
       <Button v-on:click="stopRecording()" v-if="isRecordingRef">Stop</Button>
     </div>
-    <canvas id="chart" style="width: 100%; max-width: 100%"></canvas>
+    <canvas id="chart" style="width: 90%; max-width: 90%"></canvas>
   </div>
 </template>

@@ -11,6 +11,8 @@ layout: intro
 author: Chidi Williams
 keywords: ml,ai,whisper,buzz
 colorSchema: "light"
+fonts:
+  sans: IBM Plex Sans
 ---
 
 # Hearing between the lines

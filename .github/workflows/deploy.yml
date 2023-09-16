@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -34,7 +38,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: ./node_modules/.bin/slidev
+        run: ./node_modules/.bin/slidev build 2023-hearing-between-the-lines/slides.md --base /2023/hearing-between-the-lines/ --out /dist/2023/hearing-between-the-lines
 
       - uses: actions/configure-pages@v3
 

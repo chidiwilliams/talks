@@ -34,7 +34,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm -r run build
+        run: ./node_modules/.bin/slidev
 
       - uses: actions/configure-pages@v3
 

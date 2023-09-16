@@ -21,52 +21,67 @@ colorSchema: "light"
   </span>
 </div>
 
-<!-- prettier-ignore-start -->
-
 ---
-layout: image-right
-image: img/profile.jpg
----
-
-<!-- prettier-ignore-end -->
 
 # About me
 
-- Chidi Williams
-- Software Engineer. Previously: Eyowo. Now: GS.
-- Lagos -> London
-- Co-organize SysDsgn and SysConf.
-- Writing, blog @ [chidiwilliams.com](https://chidiwilliams.com)
-- Open-source contributor. Web animations, Languages and compilers, AI.
-- Music — guitar, piano.
+<div class="flex gap-32">
+  <div class="flex-1">
+
+  Chidi Williams, Software Engineer
+<v-clicks>
+
+  - Previously at a fintech in Lagos, now at a bank in London
+  - Write a programming blog at [chidiwilliams.com](https://chidiwilliams.com)
+  - Co-organize SysDsgn (and SysConf)
+  - Often build hobby projects in web animations, languages and compilers, and (more recently) AI
+  - Love to play music — guitar, piano
+</v-clicks>
+
+  </div>
+  <div style="width: 150px; height: 150px">
+  <img class="rounded-lg shadow-xl" src="/img/profile.jpg" />
+  </div>
+</div>
 
 ---
 
 # What to expect
 
-- Basics of Machine Learning (for audio tasks)
-- Recent advances and applications (Whisper, etc.)
-- Open problems and opportunities
-- How to contribute
+<ul>
+<li>Basics of Machine Learning (for audio tasks)</li>
+<v-click> <li> Recent advances and applications (Whisper, etc.) </li> </v-click>
+<v-click> <li> Open problems and opportunities </li> </v-click>
+<v-click> <li> How to contribute </li> </v-click>
+</ul>
 
 ---
 
 # How I got here
 
-<!-- TODO: Make this a timeline -->
+<v-clicks>
 
-- OpenAI releases Whisper in September 2022
-  - Multi-lingual speech-to-text transcription model
-- Saw a tweet about having a desktop version
-- Started working on one a few days later
-- Released a demo Mac app: https://twitter.com/chidiwilliams__/status/1575197377048514560
-- Today: 7.4k stars on GitHub, 134k downloads for cross-platform version. https://github.com/chidiwilliams/buzz
-- _I'm pretty new to this!_
-- Going to talk about everything between September 2022 and now
+- **September 2022**
+
+  - OpenAI releases Whisper, a multi-lingual speech-to-text transcription model
+  - See a tweet about wanting the model packaged as a desktop app and I begin working on one soon after
+  - Demo a Mac app on [Twitter](https://twitter.com/chidiwilliams__/status/1575197377048514560) (~20k video views, ~100k impressions)
+
+- **September 2023**:
+
+  - \>7.4k stars on [GitHub](https://github.com/chidiwilliams/buzz), >130k downloads
+
+- Here's what I've learned in the past year!
+
+</v-clicks>
+
+<!-- I'm going to talk about what I've learned in the past year. I'm still pretty new to this! -->
 
 ---
 
 # Landscape of audio ML
+
+<v-clicks>
 
 - Classification
 
@@ -81,9 +96,13 @@ image: img/profile.jpg
   - Music detection
   - Speech segmentation
 
+</v-clicks>
+
 ---
 
 # Landscape of audio ML
+
+<v-clicks>
 
 - Recognition and Transcription
 
@@ -94,6 +113,8 @@ image: img/profile.jpg
   - Text-to-speech (TTS)
   - Voice cloning
   - Music generation
+
+</v-clicks>
 
 ---
 
@@ -184,13 +205,13 @@ layout: section
           Easy to use. Just <code>pip install</code> and run!
   <v-start>
 
-  ```console
-  $ pip install openai-whisper
-  $ whisper input.wav
-  Detected language: French
-  [00:00.000 --> 00:09.640]  Bienvenue dans Paserelle, un
-  podcast pensé pour éveiller la curiosité...
-  ```
+```console
+$ pip install openai-whisper
+$ whisper input.wav
+Detected language: French
+[00:00.000 --> 00:09.640]  Bienvenue dans Paserelle, un
+podcast pensé pour éveiller la curiosité...
+```
 
   </v-start>
         </li>

@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    ".coveragerc": "ini",
+    "stdlib.h": "c"
+  }
+}

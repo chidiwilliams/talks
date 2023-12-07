@@ -1,0 +1,8 @@
+{
+  "name": "2023-concurrency-in-five-problems",
+  "private": true,
+  "scripts": {
+    "build": "../node_modules/.bin/slidev build --base /2023/concurrency-in-five-problems/ --out ../dist/2023/concurrency-in-five-problems",
+    "dev": "slidev --open"
+  }
+}

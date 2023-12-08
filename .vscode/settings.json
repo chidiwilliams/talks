@@ -1,6 +1,7 @@
 {
   "files.associations": {
     ".coveragerc": "ini",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "__mutex_base": "c"
   }
 }

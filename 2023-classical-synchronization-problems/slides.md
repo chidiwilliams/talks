@@ -9,7 +9,7 @@ title: Classical Synchronization Problems
 mdc: true
 layout: intro
 author: Chidi Williams
-keywords: systems-design,concurrency
+keywords: systems-design,concurrency,synchronization,sysdsgn
 colorSchema: "dark"
 fonts:
   sans: IBM Plex Sans
@@ -49,12 +49,16 @@ Chidi Williams, Software Engineer
 
 ---
 
-# Introduction to concurrency
+# Introduction
 
-- Computers need concurrency so they can run multiple applications at the time.
-- Without concurrency, the computer will have to wait for each application to complete before running the next one.
-- However, concurrency introduces several issues including resource sharing, synchronization, and ...
-- We'll have a look at some of these problems and learn about various concurrency primitives and concepts.
+<v-clicks>
+
+- Computers use concurrency to run multiple applications at the time.
+- Without concurrency, the system has to wait for each application to complete before running the next one.
+- But concurrency introduces several issues involving resource sharing and synchronization.
+- We'll have a look at some "classical" concurrency problems, learning about different concurrency primitives and concepts as we go.
+
+</v-clicks>
 
 ---
 
@@ -64,7 +68,7 @@ Chidi Williams, Software Engineer
 - > "Consider two processes, which are called the **'producer'** and the **'consumer'** respectively. The producer is a cyclic process and each time it goes through its cycle it produces a certain portion of information, that has to be processed by the consumer. The consumer is also a cyclic process and each time it goes through its cycle, it can process the next portion of information, as has been produced by the producer ... if the two are coupled via a buffer of finite size, say _N_ portions." - _Djikstra_
 - Applications in queueing, logging, stream processing systems.
 
-<ProducerConsumer />
+![](/img/bounded-buffer.png)
 
 ---
 
@@ -335,6 +339,176 @@ Consumed: 6
 > - Something else?
 
 </div>
+
+---
+
+# Readers-writers problem
+
+- Many concurrent reader/writer threads trying to access a shared resource at the same time.
+- No thread must access the shared resource for either reading or writing while another thread is writing.
+- When a writer is writing, no readers or writers are allowed. When a reader is reading, writers must wait, but other readers can proceed.
+- Applications in queueing, logging, stream processing systems as well.
+
+---
+
+# Writers
+
+<div class="flex justify-around">
+
+```c
+#define NUM_WRITERS 5
+
+sem_t rw_mutex;
+
+void *writer(void *arg) {
+  sem_wait(&rw_mutex);
+  printf("Writer is writing\n");
+  sem_post(&rw_mutex);
+  return NULL;
+}
+```
+
+```c
+int main() {
+  pthread_t writers[NUM_WRITERS];
+
+  sem_init(&rw_mutex, 0, 1);
+
+  for (int i = 0; i < NUM_WRITERS; i++) {
+    pthread_create(&writers[i], NULL, writer, NULL);
+  }
+
+  for (int i = 0; i < NUM_WRITERS; i++) {
+    pthread_join(writers[i], NULL);
+  }
+
+  sem_destroy(&rw_mutex);
+
+  return 0;
+}
+
+```
+
+</div>
+
+---
+
+# Semaphore
+
+- A variable that is changed (incremented/decremented, or toggled) based on some conditions.
+- Used to control access to a shared resource.
+- **Counting semaphores** allow arbitrary resource count; **binary semaphores** are restricted to 0 and 1 (locks).
+
+```asm
+; Increment semaphore
+post:
+    lock inc dword [semaphore]
+    ret
+
+; Decrement semaphore (wait if 0 or negative)
+wait:
+    lock dec dword [semaphore]
+    js wait_busy
+    ret
+
+wait_busy:
+    lock cmp dword [semaphore], 0
+    jl wait_busy
+    ret
+```
+
+---
+
+# Readers
+
+
+<div class="flex justify-around">
+
+```c
+sem_t mutex;
+int read_count = 0;
+```
+
+```c
+void *reader(void *arg) {
+  // Acquire rw_mutex if this is the only reader
+  sem_wait(&mutex);
+  read_count++;
+  if (read_count == 1) {
+    sem_wait(&rw_mutex);
+  }
+  sem_post(&mutex);
+
+  printf("Reader is reading\n");
+
+  // Release rw_mutex if this is the last reader
+  sem_wait(&mutex);
+  read_count--;
+  if (read_count == 0) {
+    sem_post(&rw_mutex);
+  }
+  sem_post(&mutex);
+
+  return NULL;
+}
+```
+</div>
+
+---
+
+# Output
+
+
+<div class="flex justify-around">
+
+
+```txt
+Writer 3 is writing
+Writer 3 finished writing
+Reader 3 is reading
+Reader 1 is reading
+Reader 2 is reading
+Reader 0 is reading
+Reader 4 is reading
+Reader 3 finished reading
+Reader 1 finished reading
+Reader 2 finished reading
+Reader 4 finished reading
+Reader 0 finished reading
+Writer 4 is writing
+Writer 4 finished writing
+Writer 1 is writing
+Writer 1 finished writing
+Writer 0 is writing
+Writer 0 finished writing
+Writer 2 is writing
+Writer 2 finished writing
+```
+
+<v-click>
+<div>
+
+Notice how:
+
+- Once a writer starts, no writer/reader can start.
+- Multiple readers can start reading at the same time.
+- All readers have to complete before writing restarts.
+</div>
+</v-click>
+</div>
+
+
+---
+
+# Mo' synchronization problems
+
+- Dining philosophers problem
+- Cigarette smokers problem
+- Dining savages problem
+- Barbershop problem
+- Santa Claus problem
+- River crossing problem
+- Roller coaster problem
 
 ---
 

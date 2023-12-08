@@ -7,6 +7,8 @@ drawings:
   persist: false
 mdc: true
 layout: intro
+download: true
+exportFilename: Classical Synchronization Problems
 author: Chidi Williams
 keywords: systems-design,concurrency,synchronization,sysdsgn
 colorSchema: "dark"

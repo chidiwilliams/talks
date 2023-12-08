@@ -8,6 +8,8 @@ drawings:
 mdc: true
 layout: intro
 author: Chidi Williams
+download: true
+exportFilename: Hearing Between the Lines
 keywords: ml,ai,whisper,buzz
 colorSchema: "light"
 fonts:

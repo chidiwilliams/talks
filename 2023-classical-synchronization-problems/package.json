@@ -1,0 +1,8 @@
+{
+  "name": "2023-classical-synchronization-problems",
+  "private": true,
+  "scripts": {
+    "build": "../node_modules/.bin/slidev build --base /2023/classical-synchronization-problems/ --out ../dist/2023/classical-synchronization-problems",
+    "dev": "slidev --open"
+  }
+}

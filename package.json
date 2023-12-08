@@ -8,6 +8,8 @@
   "dependencies": {
     "@slidev/cli": "^0.43.3",
     "@slidev/theme-apple-basic": "^0.20.0",
-    "chart.js": "^4.4.0"
+    "chart.js": "^4.4.0",
+    "vue-client-only": "^2.1.0",
+    "vue-mermaid-string": "^4.0.70"
   }
 }

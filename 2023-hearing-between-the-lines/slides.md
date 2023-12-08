@@ -5,7 +5,6 @@ lineNumbers: false
 info:
 drawings:
   persist: false
-title: Hearing Between the Lines
 mdc: true
 layout: intro
 author: Chidi Williams

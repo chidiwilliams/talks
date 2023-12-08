@@ -35,7 +35,7 @@ Chidi Williams, Software Engineer
 
 <div>
 
-- Previously at Eyowo, now at GS in London
+- Previously at Eyowo, now at GS
 - Write a programming blog at [chidiwilliams.com](https://chidiwilliams.com)
 - Co-organize SysDsgn
 - Often build projects in web animations, languages and compilers, and (more recently) AI

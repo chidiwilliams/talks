@@ -5,7 +5,6 @@ lineNumbers: false
 info:
 drawings:
   persist: false
-title: Classical Synchronization Problems
 mdc: true
 layout: intro
 author: Chidi Williams
@@ -19,7 +18,7 @@ fonts:
 
 <div class="absolute bottom-10">
   <span class="font-400 text-neutral-500">
-    <span class="text-green-400 font-600">SysDsgn Pop-up</span> / 2023-12-06 / Chidi Williams
+    <span class="text-green-400 font-600">SysDsgn Pop-up</span> / 2023-12-07 / Chidi Williams
   </span>
 </div>
 
@@ -32,14 +31,15 @@ fonts:
 
 Chidi Williams, Software Engineer
 
-<v-clicks>
+<div>
 
 - Previously at Eyowo, now at GS in London
 - Write a programming blog at [chidiwilliams.com](https://chidiwilliams.com)
 - Co-organize SysDsgn
 - Often build projects in web animations, languages and compilers, and (more recently) AI
 - Love to play music — guitar, piano
-</v-clicks>
+
+</div>
 
   </div>
   <div style="width: 150px; height: 150px">
@@ -51,14 +51,10 @@ Chidi Williams, Software Engineer
 
 # Introduction
 
-<v-clicks>
-
 - Computers use concurrency to run multiple applications at the time.
 - Without concurrency, the system has to wait for each application to complete before running the next one.
 - But concurrency introduces several issues involving resource sharing and synchronization.
 - We'll have a look at some "classical" concurrency problems, learning about different concurrency primitives and concepts as we go.
-
-</v-clicks>
 
 ---
 
@@ -209,15 +205,11 @@ void *consumer() {
 
 # Mutex
 
-<v-clicks>
-
 - Guarantees \[mut]ual \[ex]clusion: When a thread is accessing a shared resource, no other concurrent thread can access it.
 - One implementation uses **shared memory** and an **atomic test-and-set operation**.
 - To "lock" the mutex, each process tries to test-and-set a location in shared memory. But only one wins, since the operation is atomic!
 - Unsuccessful processes can keep checking the flag until they can acquire it.
 - CPU pre-emption is possible, so the system can do other things while a process waits for the lock.
-
-</v-clicks>
 
 <div v-click>
 ```asm
@@ -421,7 +413,6 @@ wait_busy:
 
 # Readers
 
-
 <div class="flex justify-around">
 
 ```c
@@ -452,15 +443,14 @@ void *reader(void *arg) {
   return NULL;
 }
 ```
+
 </div>
 
 ---
 
 # Output
 
-
 <div class="flex justify-around">
-
 
 ```txt
 Writer 3 is writing
@@ -485,7 +475,6 @@ Writer 2 is writing
 Writer 2 finished writing
 ```
 
-<v-click>
 <div>
 
 Notice how:
@@ -494,9 +483,7 @@ Notice how:
 - Multiple readers can start reading at the same time.
 - All readers have to complete before writing restarts.
 </div>
-</v-click>
 </div>
-
 
 ---
 
@@ -512,7 +499,7 @@ Notice how:
 
 ---
 
-# References
+# Learn more
 
 - [The Little Book of Semaphores - Downey](https://greenteapress.com/semaphores/LittleBookOfSemaphores.pdf)
 - [Modern Operating Systems - Tanenbaum](https://en.wikipedia.org/wiki/Modern_Operating_Systems)

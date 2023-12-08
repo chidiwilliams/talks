@@ -43,7 +43,7 @@ Chidi Williams, Software Engineer
 
   </div>
   <div style="width: 150px; height: 150px">
-  <img class="rounded-lg shadow-xl" src="https://gravatar.com/avatar/165597199f7606613dc1dfc3b2d7d20d?s=250" />
+  <img class="rounded-lg shadow-xl" src="/img/profile.jpg" />
   </div>
 </div>
 

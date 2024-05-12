@@ -1,0 +1,8 @@
+{
+  "name": "2023-hearing-between-the-lines",
+  "private": true,
+  "scripts": {
+    "build": "../node_modules/.bin/slidev build --base /2023/hearing-between-the-lines/ --out ../dist/2023/hearing-between-the-lines",
+    "dev": "slidev --open"
+  }
+}

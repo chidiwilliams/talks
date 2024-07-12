@@ -1,8 +1,8 @@
 {
-  "name": "2023-hearing-between-the-lines",
+  "name": "2024-database-internals-failure-detection",
   "private": true,
   "scripts": {
-    "build": "../node_modules/.bin/slidev build --base /2023/hearing-between-the-lines/ --out ../dist/2023/hearing-between-the-lines",
+    "build": "../node_modules/.bin/slidev build --base /2024/database-internals-failure-detection/ --out ../dist/2024/database-internals-failure-detection",
     "dev": "slidev --open"
   }
 }

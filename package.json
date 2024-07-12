@@ -7,10 +7,10 @@
     "build": "pnpm -r --workspace-concurrency=1 run build"
   },
   "dependencies": {
-    "@slidev/cli": "^0.48.2",
-    "@slidev/theme-default": "latest",
+    "@slidev/cli": "^0.48.9",
     "@slidev/theme-apple-basic": "latest",
-    "vue": "^3.4.21",
-    "chart.js": "^4.4.0"
+    "@slidev/theme-default": "latest",
+    "chart.js": "^4.4.3",
+    "vue": "^3.4.31"
   }
 }

@@ -1,0 +1,8 @@
+{
+  "name": "2024-text-search-with-tries",
+  "private": true,
+  "scripts": {
+    "build": "../node_modules/.bin/slidev build --base /2024/text-search-with-tries/ --out ../dist/2023/text-search-with-tries",
+    "dev": "../node_modules/.bin/slidev --open"
+  }
+}

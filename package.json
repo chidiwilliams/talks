@@ -12,5 +12,8 @@
     "@slidev/theme-default": "latest",
     "chart.js": "^4.4.3",
     "vue": "^3.4.31"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.45.1"
   }
 }
